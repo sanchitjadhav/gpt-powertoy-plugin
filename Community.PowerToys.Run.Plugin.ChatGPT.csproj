@@ -1,8 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<!-- Look at Directory.Build.props in root for common stuff as well -->
   	<Import Project="..\..\..\..\Common.Dotnet.CsWinRT.props" />	
 
 	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework> <!-- Added TargetFramework -->
 		<ProjectGuid>{1B9CEB09-E879-45E8-93F4-BD5CD555EAA7}</ProjectGuid>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>Community.PowerToys.Run.Plugin.ChatGPT</RootNamespace>
@@ -11,7 +12,7 @@
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<GenerateSatelliteAssembliesForCore>true</GenerateSatelliteAssembliesForCore>
-		<OutputPath>..\..\..\..\..\$(Platform)\$(Configuration)\RunPlugins\ChatGPT\</OutputPath>
+		<OutputPath>bin\</OutputPath> <!-- Simplified OutputPath -->
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -32,12 +33,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Wox.Infrastructure\Wox.Infrastructure.csproj">
-			<Private>false</Private>
-		</ProjectReference>
-		<ProjectReference Include="..\..\Wox.Plugin\Wox.Plugin.csproj">
-			<Private>false</Private>
-		</ProjectReference>
+		<!-- Removed ProjectReference entries and added Reference to PowerToys assemblies -->
+		<Reference Include="Microsoft.PowerToys.Run.Infrastructure">
+			<HintPath>lib\Microsoft.PowerToys.Run.Infrastructure.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.PowerToys.Run.Plugin">
+			<HintPath>lib\Microsoft.PowerToys.Run.Plugin.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +71,4 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-
-
 </Project>
